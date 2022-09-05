@@ -14,7 +14,7 @@ namespace CollectionDemo.Services
 
         public async Task<List<TodoModel>> GetTodoList()
         {
-            var studentList = new List<TodoModel>();
+            var todoList = new List<TodoModel>();
 
             using (var httpClient = new HttpClient())
             {
@@ -22,11 +22,11 @@ namespace CollectionDemo.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    studentList = JsonSerializer.Deserialize<List<TodoModel>>(content, _serializerOptions);
+                    todoList = JsonSerializer.Deserialize<List<TodoModel>>(content, _serializerOptions);
                 }
             }
 
-            return studentList;
+            return todoList;
         }
     }
 }
